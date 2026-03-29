@@ -1,0 +1,426 @@
+<!-- ===== NEYAN - Main Template ===== -->
+
+<!-- Navigation -->
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="nav-container">
+    <a class="logo" (click)="scrollToSection('home')">
+      <img src="assets/neyan.png" alt="Neyan Logo" class="logo-img">
+      <span class="logo-text">Neyan</span>
+    </a>
+
+    <ul class="nav-links" [class.active]="mobileMenuOpen">
+      <li *ngFor="let item of navItems">
+        <a 
+          [class.active]="activeSection === item.id"
+          (click)="scrollToSection(item.id)">
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+
+    <button class="mobile-toggle" (click)="toggleMobileMenu()">
+      <i class="fa-solid" [class.fa-bars]="!mobileMenuOpen" [class.fa-xmark]="mobileMenuOpen"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-bg">
+    <div class="grid-overlay"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+  </div>
+  
+  <div class="hero-content" @fadeInUp>
+    <div class="hero-badge">
+      <i class="fa-solid fa-bolt"></i>
+      <span>Startup Tech Mauritanienne</span>
+    </div>
+    
+    <h1 class="hero-title">
+      L'Innovation par des
+      <span class="text-gradient">Étudiants Ingénieurs</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Nous sommes Neyan, une équipe de jeunes ingénieurs passionnés et geeks, 
+      développant des solutions technologiques innovantes pour transformer le futur.
+    </p>
+    
+    <div class="hero-cta">
+      <button class="btn btn-primary" (click)="scrollToSection('contact')">
+        <i class="fa-solid fa-paper-plane"></i>
+        Nous Contacter
+      </button>
+      <button class="btn btn-secondary" (click)="scrollToSection('services')">
+        <i class="fa-solid fa-arrow-down"></i>
+        Découvrir
+      </button>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item" *ngFor="let stat of stats" @scaleIn>
+        <div class="stat-icon">
+          <i [class]="stat.icon"></i>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" (click)="scrollToSection('about')">
+    <div class="mouse">
+      <div class="wheel"></div>
+    </div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="section-header" @fadeInUp>
+      <span class="section-tag">À Propos</span>
+      <h2>Qui Sommes-Nous ?</h2>
+      <p>Une startup née de la passion et de la curiosité</p>
+    </div>
+
+    <div class="about-content">
+      <div class="about-text" @fadeInLeft>
+        <h3>Des <span class="text-gradient">Geeks</span> au Service de l'Innovation</h3>
+        <p>
+          Fondée début <strong>2025</strong>, Neyan est née de l'ambition de jeunes étudiants ingénieurs 
+          mauritaniens passionnés par la technologie. Notre curiosité insatiable et notre amour pour 
+          le code nous poussent à repousser les limites de l'innovation.
+        </p>
+        <p>
+          Notre premier grand succès ? Un contrat de <strong>1,5 million MRU</strong> avec la 
+          Région de Nouakchott pour un projet de recyclage financé par <strong>Bloomberg</strong>. 
+          Une preuve que la jeunesse mauritanienne peut rivaliser sur la scène internationale.
+        </p>
+        
+        <div class="about-features">
+          <div class="feature" *ngFor="let highlight of teamHighlights">
+            <div class="feature-icon">
+              <i [class]="highlight.icon"></i>
+            </div>
+            <div class="feature-text">
+              <h4>{{ highlight.title }}</h4>
+              <p>{{ highlight.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual" @fadeInRight>
+        <div class="visual-card">
+          <div class="code-window">
+            <div class="window-header">
+              <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="window-title">neyan.ts</span>
+            </div>
+            <div class="code-content">
+              <pre><code><span class="keyword">const</span> <span class="variable">neyan</span> = &#123;
+  <span class="property">founders</span>: <span class="string">"Étudiants Ingénieurs"</span>,
+  <span class="property">founded</span>: <span class="number">2025</span>,
+  <span class="property">passion</span>: <span class="string">"Tech & Innovation"</span>,
+  <span class="property">mission</span>: <span class="string">"Transformer le futur"</span>,
+  
+  <span class="method">createSolutions</span>() &#123;
+    <span class="keyword">return</span> <span class="string">"Excellence"</span>;
+  &#125;
+&#125;;</code></pre>
+            </div>
+          </div>
+          <div class="floating-icons">
+            <div class="float-icon icon-1"><i class="fa-brands fa-angular"></i></div>
+            <div class="float-icon icon-2"><i class="fa-brands fa-react"></i></div>
+            <div class="float-icon icon-3"><i class="fa-brands fa-python"></i></div>
+            <div class="float-icon icon-4"><i class="fa-brands fa-node-js"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-header" @fadeInUp>
+      <span class="section-tag">Services</span>
+      <h2>Ce Que Nous Faisons</h2>
+      <p>Des solutions technologiques complètes pour vos projets</p>
+    </div>
+
+    <div class="services-grid" @staggerList>
+      <div class="service-card" *ngFor="let service of services; let i = index">
+        <div class="service-icon">
+          <i [class]="service.icon"></i>
+        </div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+        <div class="service-tags">
+          <span class="tag" *ngFor="let tech of service.technologies">{{ tech }}</span>
+        </div>
+        <div class="service-number">0{{ i + 1 }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Project Section -->
+<section id="project" class="project">
+  <div class="container">
+    <div class="section-header" @fadeInUp>
+      <span class="section-tag">Projet Phare</span>
+      <h2>Recycling Nouakchott</h2>
+      <p>Notre premier grand projet - financé par Bloomberg</p>
+    </div>
+
+    <div class="project-showcase" @fadeInUp>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-logo">
+            <i class="fa-solid fa-recycle"></i>
+          </div>
+          <div class="project-meta">
+            <span class="project-client">Région de Nouakchott</span>
+            <span class="project-year">2025</span>
+          </div>
+        </div>
+
+        <h3>Système de Gestion du Recyclage</h3>
+        
+        <p class="project-description">
+          Une plateforme complète de gestion du recyclage pour la région de Nouakchott, 
+          développée dans le cadre d'une initiative environnementale financée par Bloomberg. 
+          Ce projet ambitieux vise à transformer la gestion des déchets en Mauritanie.
+        </p>
+
+        <div class="project-highlights">
+          <div class="highlight">
+            <i class="fa-solid fa-coins"></i>
+            <div>
+              <strong>1.5M MRU</strong>
+              <span>Budget du projet</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <i class="fa-solid fa-globe"></i>
+            <div>
+              <strong>Bloomberg</strong>
+              <span>Financement</span>
+            </div>
+          </div>
+          <div class="highlight">
+            <i class="fa-solid fa-leaf"></i>
+            <div>
+              <strong>Impact Vert</strong>
+              <span>Environnement</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-tech">
+          <span class="tech-tag">Angular</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">MongoDB</span>
+          <span class="tech-tag">IoT</span>
+          <span class="tech-tag">Analytics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-header" @fadeInUp>
+      <span class="section-tag">Contact</span>
+      <h2>Travaillons Ensemble</h2>
+      <p>Prêt à transformer votre idée en réalité ?</p>
+    </div>
+
+    <div class="contact-content">
+      <div class="contact-info" @fadeInLeft>
+        <div class="info-card">
+          <h3>Parlons de votre projet</h3>
+          <p>
+            Que vous ayez une idée d'application, un besoin de digitalisation ou 
+            un projet innovant, notre équipe de geeks est prête à vous accompagner.
+          </p>
+
+          <div class="contact-details">
+            <div class="detail">
+              <div class="detail-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="detail-text">
+                <span class="label">Email</span>
+                <a href="mailto:neyan.office@gmail.com">neyan.office&#64;gmail.com</a>
+              </div>
+            </div>
+
+            <div class="detail">
+              <div class="detail-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="detail-text">
+                <span class="label">Localisation</span>
+                <span>Nouakchott, Mauritanie</span>
+              </div>
+            </div>
+
+            <div class="detail">
+              <div class="detail-icon">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div class="detail-text">
+                <span class="label">Disponibilité</span>
+                <span>Lun - Ven: 9h - 18h</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="social-link" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="#" class="social-link" title="Twitter">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-container" @fadeInRight>
+        <form class="contact-form" (ngSubmit)="submitForm()" *ngIf="!formSubmitted">
+          <div class="form-group">
+            <label for="name">Nom complet</label>
+            <input 
+              type="text" 
+              id="name" 
+              [(ngModel)]="contactForm.name" 
+              name="name"
+              placeholder="Votre nom"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              [(ngModel)]="contactForm.email" 
+              name="email"
+              placeholder="votre@email.com"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Sujet</label>
+            <input 
+              type="text" 
+              id="subject" 
+              [(ngModel)]="contactForm.subject" 
+              name="subject"
+              placeholder="Sujet de votre message">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea 
+              id="message" 
+              [(ngModel)]="contactForm.message" 
+              name="message"
+              rows="5"
+              placeholder="Décrivez votre projet..."
+              required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fa-solid fa-paper-plane"></i>
+            Envoyer le message
+          </button>
+        </form>
+
+        <div class="form-success" *ngIf="formSubmitted" @scaleIn>
+          <div class="success-icon">
+            <i class="fa-solid fa-check-circle"></i>
+          </div>
+          <h3>Message envoyé !</h3>
+          <p>Merci pour votre message. Notre équipe vous répondra dans les plus brefs délais.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/neyan.png" alt="Neyan Logo">
+          <span>Neyan</span>
+        </div>
+        <p>
+          Startup tech mauritanienne fondée par des étudiants ingénieurs passionnés. 
+          Nous transformons les idées en solutions digitales innovantes.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a (click)="scrollToSection('home')">Accueil</a></li>
+          <li><a (click)="scrollToSection('about')">À Propos</a></li>
+          <li><a (click)="scrollToSection('services')">Services</a></li>
+          <li><a (click)="scrollToSection('contact')">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a>Applications Web</a></li>
+          <li><a>Applications Mobile</a></li>
+          <li><a>Solutions Cloud</a></li>
+          <li><a>IA & Data</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h4>Contact Rapide</h4>
+        <p>Envoyez-nous un email directement :</p>
+        <button class="btn btn-primary" (click)="openEmail()">
+          <i class="fa-solid fa-envelope"></i>
+          neyan.office&#64;gmail.com
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear }} Neyan. Tous droits réservés.</p>
+      <p>Créé avec <i class="fa-solid fa-heart"></i> par des geeks mauritaniens</p>
+    </div>
+  </div>
+</footer>
