@@ -10,7 +10,7 @@
 
     <ul class="nav-links" [class.active]="mobileMenuOpen">
       <li *ngFor="let item of navItems">
-        <a 
+        <a
           [class.active]="activeSection === item.id"
           (click)="scrollToSection(item.id)">
           {{ item.label }}
@@ -32,23 +32,23 @@
     <div class="gradient-orb orb-2"></div>
     <div class="gradient-orb orb-3"></div>
   </div>
-  
+
   <div class="hero-content" @fadeInUp>
     <div class="hero-badge">
       <i class="fa-solid fa-bolt"></i>
       <span>Startup Tech Mauritanienne</span>
     </div>
-    
+
     <h1 class="hero-title">
-      L'Innovation par des
-      <span class="text-gradient">Étudiants Ingénieurs</span>
+      L'Innovation portée par 
+      <span class="text-gradient">de jeunes Ingénieurs</span>
     </h1>
-    
+
     <p class="hero-subtitle">
-      Nous sommes Neyan, une équipe de jeunes ingénieurs passionnés et geeks, 
+      Nous sommes Neyan, une équipe de jeunes ingénieurs passionnés et geeks,
       développant des solutions technologiques innovantes pour transformer le futur.
     </p>
-    
+
     <div class="hero-cta">
       <button class="btn btn-primary" (click)="scrollToSection('contact')">
         <i class="fa-solid fa-paper-plane"></i>
@@ -60,61 +60,33 @@
       </button>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat-item" *ngFor="let stat of stats" @scaleIn>
-        <div class="stat-icon">
-          <i [class]="stat.icon"></i>
-        </div>
-        <div class="stat-info">
-          <span class="stat-value">{{ stat.value }}</span>
-          <span class="stat-label">{{ stat.label }}</span>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <div class="scroll-indicator" (click)="scrollToSection('about')">
-    <div class="mouse">
-      <div class="wheel"></div>
-    </div>
-    <span>Scroll</span>
-  </div>
 </section>
 
 <!-- About Section -->
 <section id="about" class="about">
   <div class="container">
-    <div class="section-header" @fadeInUp>
-      <span class="section-tag">À Propos</span>
-      <h2>Qui Sommes-Nous ?</h2>
-      <p>Une startup née de la passion et de la curiosité</p>
-    </div>
+    <app-section-header
+      @fadeInUp
+      tag="À Propos"
+      title="Qui Sommes-Nous ?"
+      subtitle="Une startup née de la passion et de la curiosité" />
 
     <div class="about-content">
       <div class="about-text" @fadeInLeft>
         <h3>Des <span class="text-gradient">Geeks</span> au Service de l'Innovation</h3>
         <p>
-          Fondée début <strong>2025</strong>, Neyan est née de l'ambition de jeunes étudiants ingénieurs 
-          mauritaniens passionnés par la technologie. Notre curiosité insatiable et notre amour pour 
-          le code nous poussent à repousser les limites de l'innovation.
+          Fondée début <strong>2025</strong>, Neyan est née de l’ambition de 
+          jeunes ingénieurs mauritaniens passionnés par la technologie.
+          Notre curiosité insatiable et notre amour du code nous poussent à repousser les limites de l’innovation.
+
         </p>
         <p>
-          Notre premier grand succès ? Un contrat de <strong>1,5 million MRU</strong> avec la 
-          Région de Nouakchott pour un projet de recyclage financé par <strong>Bloomberg</strong>. 
+          Notre premier grand succès ? Un contrat  avec la
+        <strong>Région de Nouakchott</strong>  pour un projet de recyclage financé par <strong>Bloomberg</strong>.
           Une preuve que la jeunesse mauritanienne peut rivaliser sur la scène internationale.
         </p>
-        
-        <div class="about-features">
-          <div class="feature" *ngFor="let highlight of teamHighlights">
-            <div class="feature-icon">
-              <i [class]="highlight.icon"></i>
-            </div>
-            <div class="feature-text">
-              <h4>{{ highlight.title }}</h4>
-              <p>{{ highlight.description }}</p>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="about-visual" @fadeInRight>
@@ -134,7 +106,7 @@
   <span class="property">founded</span>: <span class="number">2025</span>,
   <span class="property">passion</span>: <span class="string">"Tech & Innovation"</span>,
   <span class="property">mission</span>: <span class="string">"Transformer le futur"</span>,
-  
+
   <span class="method">createSolutions</span>() &#123;
     <span class="keyword">return</span> <span class="string">"Excellence"</span>;
   &#125;
@@ -156,11 +128,11 @@
 <!-- Services Section -->
 <section id="services" class="services">
   <div class="container">
-    <div class="section-header" @fadeInUp>
-      <span class="section-tag">Services</span>
-      <h2>Ce Que Nous Faisons</h2>
-      <p>Des solutions technologiques complètes pour vos projets</p>
-    </div>
+    <app-section-header
+      @fadeInUp
+      tag="Services"
+      title="Ce Que Nous Faisons"
+      subtitle="Des solutions technologiques complètes pour vos projets" />
 
     <div class="services-grid" @staggerList>
       <div class="service-card" *ngFor="let service of services; let i = index">
@@ -169,76 +141,74 @@
         </div>
         <h3>{{ service.title }}</h3>
         <p>{{ service.description }}</p>
-        <div class="service-tags">
-          <span class="tag" *ngFor="let tech of service.technologies">{{ tech }}</span>
-        </div>
+       
         <div class="service-number">0{{ i + 1 }}</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Project Section -->
-<section id="project" class="project">
+<!-- Why Choose Us Section -->
+<section id="why-choose-us" class="why-choose">
   <div class="container">
-    <div class="section-header" @fadeInUp>
-      <span class="section-tag">Projet Phare</span>
-      <h2>Recycling Nouakchott</h2>
-      <p>Notre premier grand projet - financé par Bloomberg</p>
+    <div class="why-header" @fadeInUp>
+      <span class="why-label">Pourquoi nous choisir</span>
+      <h2>Pourquoi Nous Choisir</h2>
+      <p>
+        Choisir Neyan, c'est travailler avec une équipe qui combine expertise technique,
+        compréhension métier et exécution rapide pour transformer vos idées en solutions concrètes.
+      </p>
     </div>
 
-    <div class="project-showcase" @fadeInUp>
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-logo">
-            <i class="fa-solid fa-recycle"></i>
-          </div>
-          <div class="project-meta">
-            <span class="project-client">Région de Nouakchott</span>
-            <span class="project-year">2025</span>
+    <div class="why-feature-grid" @fadeInUp>
+      <article class="why-feature-card">
+        <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+        <h3>Livraison Rapide</h3>
+        <p>Nous avançons vite avec des cycles courts et une qualité maîtrisée à chaque étape.</p>
+      </article>
+
+      <article class="why-feature-card">
+        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Fiabilité & Sécurité</h3>
+        <p>Nous livrons un code propre, robuste et pensé pour évoluer sans compromis.</p>
+      </article>
+
+      <article class="why-feature-card">
+        <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+        <h3>Accompagnement Réel</h3>
+        <p>Nous restons à vos côtés du cadrage au déploiement avec un suivi concret.</p>
+      </article>
+    </div>
+
+    <div class="value-strip" @fadeInUp>
+      <div class="value-item"><i class="fa-solid fa-eye"></i><span>Transparence</span></div>
+      <div class="value-item"><i class="fa-solid fa-comments"></i><span>Communication</span></div>
+      <div class="value-item"><i class="fa-solid fa-medal"></i><span>Qualité</span></div>
+      <div class="value-item"><i class="fa-solid fa-headset"></i><span>Support</span></div>
+    </div>
+
+    <div class="method-neyan" @fadeInUp>
+      <div class="method-top">
+        <div class="method-left">
+          <div class="method-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <span class="method-label">Méthode Neyan</span>
+            <h3>Notre approche orientée résultat</h3>
           </div>
         </div>
-
-        <h3>Système de Gestion du Recyclage</h3>
-        
-        <p class="project-description">
-          Une plateforme complète de gestion du recyclage pour la région de Nouakchott, 
-          développée dans le cadre d'une initiative environnementale financée par Bloomberg. 
-          Ce projet ambitieux vise à transformer la gestion des déchets en Mauritanie.
-        </p>
-
-        <div class="project-highlights">
-          <div class="highlight">
-            <i class="fa-solid fa-coins"></i>
-            <div>
-              <strong>1.5M MRU</strong>
-              <span>Budget du projet</span>
-            </div>
-          </div>
-          <div class="highlight">
-            <i class="fa-solid fa-globe"></i>
-            <div>
-              <strong>Bloomberg</strong>
-              <span>Financement</span>
-            </div>
-          </div>
-          <div class="highlight">
-            <i class="fa-solid fa-leaf"></i>
-            <div>
-              <strong>Impact Vert</strong>
-              <span>Environnement</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-tech">
-          <span class="tech-tag">Angular</span>
-          <span class="tech-tag">Node.js</span>
-          <span class="tech-tag">MongoDB</span>
-          <span class="tech-tag">IoT</span>
-          <span class="tech-tag">Analytics</span>
+        <div class="method-right">
+          <p>
+            Une méthode simple, structurée et collaborative pour garantir des livrables
+            pertinents, rapides et durables.
+          </p>
         </div>
       </div>
+
+      <ul class="method-points">
+        <li>Analyse précise de vos besoins et priorités.</li>
+        <li>Plan d'exécution clair avec itérations courtes.</li>
+        <li>Livraison accompagnée avec suivi et amélioration continue.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -246,18 +216,18 @@
 <!-- Contact Section -->
 <section id="contact" class="contact">
   <div class="container">
-    <div class="section-header" @fadeInUp>
-      <span class="section-tag">Contact</span>
-      <h2>Travaillons Ensemble</h2>
-      <p>Prêt à transformer votre idée en réalité ?</p>
-    </div>
+    <app-section-header
+      @fadeInUp
+      tag="Contact"
+      title="Travaillons Ensemble"
+      subtitle="Prêt à transformer votre idée en réalité ?" />
 
     <div class="contact-content">
       <div class="contact-info" @fadeInLeft>
         <div class="info-card">
           <h3>Parlons de votre projet</h3>
           <p>
-            Que vous ayez une idée d'application, un besoin de digitalisation ou 
+            Que vous ayez une idée d'application, un besoin de digitalisation ou
             un projet innovant, notre équipe de geeks est prête à vous accompagner.
           </p>
 
@@ -274,6 +244,16 @@
 
             <div class="detail">
               <div class="detail-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="detail-text">
+                <span class="label">Téléphone</span>
+                <a href="tel:+22231003680">+ 222 31 00 36 80</a>
+              </div>
+            </div>
+            
+            <div class="detail">
+              <div class="detail-icon">
                 <i class="fa-solid fa-location-dot"></i>
               </div>
               <div class="detail-text">
@@ -281,6 +261,8 @@
                 <span>Nouakchott, Mauritanie</span>
               </div>
             </div>
+
+        
 
             <div class="detail">
               <div class="detail-icon">
@@ -298,7 +280,7 @@
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
             <a href="#" class="social-link" title="GitHub">
-              <i class="fa-brands fa-github"></i>
+              <i class="fa-brands fa-facebook"></i>
             </a>
             <a href="#" class="social-link" title="Twitter">
               <i class="fa-brands fa-twitter"></i>
@@ -311,53 +293,49 @@
       </div>
 
       <div class="contact-form-container" @fadeInRight>
-        <form class="contact-form" (ngSubmit)="submitForm()" *ngIf="!formSubmitted">
+        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="submitForm()" *ngIf="!formSubmitted">
           <div class="form-group">
             <label for="name">Nom complet</label>
-            <input 
-              type="text" 
-              id="name" 
-              [(ngModel)]="contactForm.name" 
-              name="name"
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
               placeholder="Votre nom"
               required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              [(ngModel)]="contactForm.email" 
-              name="email"
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
               placeholder="votre@email.com"
               required>
           </div>
 
           <div class="form-group">
             <label for="subject">Sujet</label>
-            <input 
-              type="text" 
-              id="subject" 
-              [(ngModel)]="contactForm.subject" 
-              name="subject"
+            <input
+              type="text"
+              id="subject"
+              formControlName="subject"
               placeholder="Sujet de votre message">
           </div>
 
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea 
-              id="message" 
-              [(ngModel)]="contactForm.message" 
-              name="message"
+            <textarea
+              id="message"
+              formControlName="message"
               rows="5"
               placeholder="Décrivez votre projet..."
               required></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-full">
+          <button type="submit" class="btn btn-primary btn-full" [disabled]="isSubmitting">
             <i class="fa-solid fa-paper-plane"></i>
-            Envoyer le message
+            {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}
           </button>
         </form>
 
@@ -383,7 +361,7 @@
           <span>Neyan</span>
         </div>
         <p>
-          Startup tech mauritanienne fondée par des étudiants ingénieurs passionnés. 
+          Startup tech mauritanienne fondée par des étudiants ingénieurs passionnés.
           Nous transformons les idées en solutions digitales innovantes.
         </p>
       </div>
@@ -420,7 +398,6 @@
 
     <div class="footer-bottom">
       <p>&copy; {{ currentYear }} Neyan. Tous droits réservés.</p>
-      <p>Créé avec <i class="fa-solid fa-heart"></i> par des geeks mauritaniens</p>
-    </div>
+     </div>
   </div>
 </footer>
