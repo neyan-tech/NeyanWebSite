@@ -1,403 +1,392 @@
 <!-- ===== NEYAN - Main Template ===== -->
+<div class="page-shell" [attr.dir]="isArabic ? 'rtl' : 'ltr'" [attr.lang]="currentLang" [class.rtl]="isArabic">
+  <!-- Navigation -->
+  <nav class="navbar" [class.scrolled]="isScrolled">
+    <div class="nav-container">
+      <a class="logo" (click)="scrollToSection('home')">
+        <img src="assets/neyan.png" alt="Neyan Logo" class="logo-img">
+        <span class="logo-text">Neyan</span>
+      </a>
 
-<!-- Navigation -->
-<nav class="navbar" [class.scrolled]="isScrolled">
-  <div class="nav-container">
-    <a class="logo" (click)="scrollToSection('home')">
-      <img src="assets/neyan.png" alt="Neyan Logo" class="logo-img">
-      <span class="logo-text">Neyan</span>
-    </a>
-
-    <ul class="nav-links" [class.active]="mobileMenuOpen">
-      <li *ngFor="let item of navItems">
-        <a
-          [class.active]="activeSection === item.id"
-          (click)="scrollToSection(item.id)">
-          {{ item.label }}
-        </a>
-      </li>
-    </ul>
-
-    <button class="mobile-toggle" (click)="toggleMobileMenu()">
-      <i class="fa-solid" [class.fa-bars]="!mobileMenuOpen" [class.fa-xmark]="mobileMenuOpen"></i>
-    </button>
-  </div>
-</nav>
-
-<!-- Hero Section -->
-<section id="home" class="hero">
-  <div class="hero-bg">
-    <div class="grid-overlay"></div>
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
-  </div>
-
-  <div class="hero-content" @fadeInUp>
-    <div class="hero-badge">
-      <i class="fa-solid fa-bolt"></i>
-      <span>Startup Tech Mauritanienne</span>
-    </div>
-
-    <h1 class="hero-title">
-      L'Innovation portée par 
-      <span class="text-gradient">de jeunes Ingénieurs</span>
-    </h1>
-
-    <p class="hero-subtitle">
-      Nous sommes Neyan, une équipe de jeunes ingénieurs passionnés et geeks,
-      développant des solutions technologiques innovantes pour transformer le futur.
-    </p>
-
-    <div class="hero-cta">
-      <button class="btn btn-primary" (click)="scrollToSection('contact')">
-        <i class="fa-solid fa-paper-plane"></i>
-        Nous Contacter
-      </button>
-      <button class="btn btn-secondary" (click)="scrollToSection('services')">
-        <i class="fa-solid fa-arrow-down"></i>
-        Découvrir
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- About Section -->
-<section id="about" class="about">
-  <div class="container">
-    <app-section-header
-      @fadeInUp
-      tag="À Propos"
-      title="Qui Sommes-Nous ?"
-      subtitle="Une startup née de la passion et de la curiosité" />
-
-    <div class="about-content">
-      <div class="about-text" @fadeInLeft>
-        <h3>Des <span class="text-gradient">Geeks</span> au Service de l'Innovation</h3>
-        <p>
-          Fondée début <strong>2025</strong>, Neyan est née de l’ambition de 
-          jeunes ingénieurs mauritaniens passionnés par la technologie.
-          Notre curiosité insatiable et notre amour du code nous poussent à repousser les limites de l’innovation.
-
-        </p>
-        <p>
-          Notre premier grand succès ? Un contrat  avec la
-        <strong>Région de Nouakchott</strong>  pour un projet de recyclage financé par <strong>Bloomberg</strong>.
-          Une preuve que la jeunesse mauritanienne peut rivaliser sur la scène internationale.
-        </p>
-      </div>
-
-      <div class="about-visual" @fadeInRight>
-        <div class="visual-card">
-          <div class="code-window">
-            <div class="window-header">
-              <div class="window-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <span class="window-title">neyan.ts</span>
-            </div>
-            <div class="code-content">
-              <pre><code><span class="keyword">const</span> <span class="variable">neyan</span> = &#123;
-  <span class="property">founders</span>: <span class="string">"Étudiants Ingénieurs"</span>,
-  <span class="property">founded</span>: <span class="number">2025</span>,
-  <span class="property">passion</span>: <span class="string">"Tech & Innovation"</span>,
-  <span class="property">mission</span>: <span class="string">"Transformer le futur"</span>,
-
-  <span class="method">createSolutions</span>() &#123;
-    <span class="keyword">return</span> <span class="string">"Excellence"</span>;
-  &#125;
-&#125;;</code></pre>
-            </div>
-          </div>
-          <div class="floating-icons">
-            <div class="float-icon icon-1"><i class="fa-brands fa-angular"></i></div>
-            <div class="float-icon icon-2"><i class="fa-brands fa-react"></i></div>
-            <div class="float-icon icon-3"><i class="fa-brands fa-python"></i></div>
-            <div class="float-icon icon-4"><i class="fa-brands fa-node-js"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="services">
-  <div class="container">
-    <app-section-header
-      @fadeInUp
-      tag="Services"
-      title="Ce Que Nous Faisons"
-      subtitle="Des solutions technologiques complètes pour vos projets" />
-
-    <div class="services-grid" @staggerList>
-      <div class="service-card" *ngFor="let service of services; let i = index">
-        <div class="service-icon">
-          <i [class]="service.icon"></i>
-        </div>
-        <h3>{{ service.title }}</h3>
-        <p>{{ service.description }}</p>
-       
-        <div class="service-number">0{{ i + 1 }}</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Why Choose Us Section -->
-<section id="why-choose-us" class="why-choose">
-  <div class="container">
-    <div class="why-header" @fadeInUp>
-      <span class="why-label">Pourquoi nous choisir</span>
-      <h2>Pourquoi Nous Choisir</h2>
-      <p>
-        Choisir Neyan, c'est travailler avec une équipe qui combine expertise technique,
-        compréhension métier et exécution rapide pour transformer vos idées en solutions concrètes.
-      </p>
-    </div>
-
-    <div class="why-feature-grid" @fadeInUp>
-      <article class="why-feature-card">
-        <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
-        <h3>Livraison Rapide</h3>
-        <p>Nous avançons vite avec des cycles courts et une qualité maîtrisée à chaque étape.</p>
-      </article>
-
-      <article class="why-feature-card">
-        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3>Fiabilité & Sécurité</h3>
-        <p>Nous livrons un code propre, robuste et pensé pour évoluer sans compromis.</p>
-      </article>
-
-      <article class="why-feature-card">
-        <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
-        <h3>Accompagnement Réel</h3>
-        <p>Nous restons à vos côtés du cadrage au déploiement avec un suivi concret.</p>
-      </article>
-    </div>
-
-    <div class="value-strip" @fadeInUp>
-      <div class="value-item"><i class="fa-solid fa-eye"></i><span>Transparence</span></div>
-      <div class="value-item"><i class="fa-solid fa-comments"></i><span>Communication</span></div>
-      <div class="value-item"><i class="fa-solid fa-medal"></i><span>Qualité</span></div>
-      <div class="value-item"><i class="fa-solid fa-headset"></i><span>Support</span></div>
-    </div>
-
-    <div class="method-neyan" @fadeInUp>
-      <div class="method-top">
-        <div class="method-left">
-          <div class="method-icon"><i class="fa-solid fa-diagram-project"></i></div>
-          <div>
-            <span class="method-label">Méthode Neyan</span>
-            <h3>Notre approche orientée résultat</h3>
-          </div>
-        </div>
-        <div class="method-right">
-          <p>
-            Une méthode simple, structurée et collaborative pour garantir des livrables
-            pertinents, rapides et durables.
-          </p>
-        </div>
-      </div>
-
-      <ul class="method-points">
-        <li>Analyse précise de vos besoins et priorités.</li>
-        <li>Plan d'exécution clair avec itérations courtes.</li>
-        <li>Livraison accompagnée avec suivi et amélioration continue.</li>
+      <ul class="nav-links" [class.active]="mobileMenuOpen">
+        <li *ngFor="let item of navItems">
+          <a
+            [class.active]="activeSection === item.id"
+            (click)="scrollToSection(item.id)">
+            {{ item.label }}
+          </a>
+        </li>
       </ul>
+
+      <div class="lang-switcher">
+        <button
+          *ngFor="let lang of languages"
+          type="button"
+          [class.active]="currentLang === lang.code"
+          (click)="setLanguage(lang.code)">
+          {{ lang.label }}
+        </button>
+      </div>
+
+      <button class="mobile-toggle" (click)="toggleMobileMenu()">
+        <i class="fa-solid" [class.fa-bars]="!mobileMenuOpen" [class.fa-xmark]="mobileMenuOpen"></i>
+      </button>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- Contact Section -->
-<section id="contact" class="contact">
-  <div class="container">
-    <app-section-header
-      @fadeInUp
-      tag="Contact"
-      title="Travaillons Ensemble"
-      subtitle="Prêt à transformer votre idée en réalité ?" />
-
-    <div class="contact-content">
-      <div class="contact-info" @fadeInLeft>
-        <div class="info-card">
-          <h3>Parlons de votre projet</h3>
-          <p>
-            Que vous ayez une idée d'application, un besoin de digitalisation ou
-            un projet innovant, notre équipe de geeks est prête à vous accompagner.
-          </p>
-
-          <div class="contact-details">
-            <div class="detail">
-              <div class="detail-icon">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
-              <div class="detail-text">
-                <span class="label">Email</span>
-                <a href="mailto:neyan.office@gmail.com">neyan.office&#64;gmail.com</a>
-              </div>
-            </div>
-
-            <div class="detail">
-              <div class="detail-icon">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div class="detail-text">
-                <span class="label">Téléphone</span>
-                <a href="tel:+22231003680">+ 222 31 00 36 80</a>
-              </div>
-            </div>
-            
-            <div class="detail">
-              <div class="detail-icon">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div class="detail-text">
-                <span class="label">Localisation</span>
-                <span>Nouakchott, Mauritanie</span>
-              </div>
-            </div>
-
-        
-
-            <div class="detail">
-              <div class="detail-icon">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div class="detail-text">
-                <span class="label">Disponibilité</span>
-                <span>Lun - Ven: 9h - 18h</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="social-links">
-            <a href="#" class="social-link" title="LinkedIn">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="social-link" title="GitHub">
-              <i class="fa-brands fa-facebook"></i>
-            </a>
-            <a href="#" class="social-link" title="Twitter">
-              <i class="fa-brands fa-twitter"></i>
-            </a>
-            <a href="#" class="social-link" title="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-form-container" @fadeInRight>
-        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="submitForm()" *ngIf="!formSubmitted">
-          <div class="form-group">
-            <label for="name">Nom complet</label>
-            <input
-              type="text"
-              id="name"
-              formControlName="name"
-              placeholder="Votre nom"
-              required>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              formControlName="email"
-              placeholder="votre@email.com"
-              required>
-          </div>
-
-          <div class="form-group">
-            <label for="subject">Sujet</label>
-            <input
-              type="text"
-              id="subject"
-              formControlName="subject"
-              placeholder="Sujet de votre message">
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea
-              id="message"
-              formControlName="message"
-              rows="5"
-              placeholder="Décrivez votre projet..."
-              required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-full" [disabled]="isSubmitting">
-            <i class="fa-solid fa-paper-plane"></i>
-            {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}
-          </button>
-        </form>
-
-        <div class="form-success" *ngIf="formSubmitted" @scaleIn>
-          <div class="success-icon">
-            <i class="fa-solid fa-check-circle"></i>
-          </div>
-          <h3>Message envoyé !</h3>
-          <p>Merci pour votre message. Notre équipe vous répondra dans les plus brefs délais.</p>
-        </div>
-      </div>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
     </div>
-  </div>
-</section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="assets/neyan.png" alt="Neyan Logo">
-          <span>Neyan</span>
-        </div>
-        <p>
-          Startup tech mauritanienne fondée par des étudiants ingénieurs passionnés.
-          Nous transformons les idées en solutions digitales innovantes.
-        </p>
+    <div class="hero-content" @fadeInUp>
+      <div class="hero-badge">
+        <i class="fa-solid fa-bolt"></i>
+        <span>{{ t('hero_badge') }}</span>
       </div>
 
-      <div class="footer-links">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a (click)="scrollToSection('home')">Accueil</a></li>
-          <li><a (click)="scrollToSection('about')">À Propos</a></li>
-          <li><a (click)="scrollToSection('services')">Services</a></li>
-          <li><a (click)="scrollToSection('contact')">Contact</a></li>
-        </ul>
-      </div>
+      <h1 class="hero-title">
+        {{ t('hero_title_line1') }}
+        <span class="text-gradient">{{ t('hero_title_line2') }}</span>
+      </h1>
 
-      <div class="footer-links">
-        <h4>Services</h4>
-        <ul>
-          <li><a>Applications Web</a></li>
-          <li><a>Applications Mobile</a></li>
-          <li><a>Solutions Cloud</a></li>
-          <li><a>IA & Data</a></li>
-        </ul>
-      </div>
+      <p class="hero-subtitle">{{ t('hero_subtitle') }}</p>
 
-      <div class="footer-newsletter">
-        <h4>Contact Rapide</h4>
-        <p>Envoyez-nous un email directement :</p>
-        <button class="btn btn-primary" (click)="openEmail()">
-          <i class="fa-solid fa-envelope"></i>
-          neyan.office&#64;gmail.com
+      <div class="hero-cta">
+        <button class="btn btn-primary" (click)="scrollToSection('contact')">
+          <i class="fa-solid fa-paper-plane"></i>
+          {{ t('hero_cta_contact') }}
+        </button>
+        <button class="btn btn-secondary" (click)="scrollToSection('services')">
+          <i class="fa-solid fa-arrow-down"></i>
+          {{ t('hero_cta_discover') }}
         </button>
       </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <p>&copy; {{ currentYear }} Neyan. Tous droits réservés.</p>
-     </div>
-  </div>
-</footer>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-header" @fadeInUp>
+        <span class="about-label">{{ t('about_label') }}</span>
+        <h2>{{ t('about_title') }}</h2>
+        <p>{{ t('about_subtitle') }}</p>
+      </div>
+
+      <div class="about-feature-grid" @fadeInUp>
+        <article class="about-feature-card">
+          <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+          <h3>{{ t('fast_delivery') }}</h3>
+          <p>{{ t('fast_delivery_desc') }}</p>
+        </article>
+
+        <article class="about-feature-card">
+          <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>{{ t('reliability') }}</h3>
+          <p>{{ t('reliability_desc') }}</p>
+        </article>
+
+        <article class="about-feature-card">
+          <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+          <h3>{{ t('support_real') }}</h3>
+          <p>{{ t('support_real_desc') }}</p>
+        </article>
+      </div>
+
+      <div class="about-value-strip" @fadeInUp>
+        <div class="value-item"><i class="fa-solid fa-eye"></i><span>{{ t('transparency') }}</span></div>
+        <div class="value-item"><i class="fa-solid fa-comments"></i><span>{{ t('communication') }}</span></div>
+        <div class="value-item"><i class="fa-solid fa-medal"></i><span>{{ t('quality') }}</span></div>
+        <div class="value-item"><i class="fa-solid fa-headset"></i><span>{{ t('support') }}</span></div>
+      </div>
+
+      <div class="about-method" @fadeInUp>
+        <div class="method-top">
+          <div class="method-left">
+            <div class="method-icon"><i class="fa-solid fa-diagram-project"></i></div>
+            <div>
+              <span class="method-label">{{ t('method_label') }}</span>
+              <h3>{{ t('method_title') }}</h3>
+            </div>
+          </div>
+          <div class="method-right">
+            <p>{{ t('method_desc') }}</p>
+          </div>
+        </div>
+
+        <ul class="method-points">
+          <li>{{ t('method_point_1') }}</li>
+          <li>{{ t('method_point_2') }}</li>
+          <li>{{ t('method_point_3') }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <app-section-header
+        @fadeInUp
+        [tag]="t('services_tag')"
+        [title]="t('services_title')"
+        [subtitle]="t('services_subtitle')" />
+
+      <div class="services-grid" @staggerList>
+        <div class="service-card" *ngFor="let service of services; let i = index">
+          <div class="service-icon">
+            <i [class]="service.icon"></i>
+          </div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <div class="service-number">0{{ i + 1 }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="why-choose-us" class="why-choose">
+    <div class="container">
+      <div class="why-header" @fadeInUp>
+        <span class="why-label">{{ t('why_label') }}</span>
+        <h2>{{ t('why_title') }}</h2>
+        <p>{{ t('why_subtitle') }}</p>
+      </div>
+
+      <div class="why-feature-grid" @fadeInUp>
+        <article class="why-feature-card">
+          <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+          <h3>{{ t('fast_delivery') }}</h3>
+          <p>{{ t('fast_delivery_desc') }}</p>
+        </article>
+
+        <article class="why-feature-card">
+          <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>{{ t('reliability') }}</h3>
+          <p>{{ t('reliability_desc') }}</p>
+        </article>
+
+        <article class="why-feature-card">
+          <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+          <h3>{{ t('support_real') }}</h3>
+          <p>{{ t('support_real_desc') }}</p>
+        </article>
+      </div>
+
+      <div class="value-strip" @fadeInUp>
+        <div class="value-item"><i class="fa-solid fa-eye"></i><span>{{ t('transparency') }}</span></div>
+        <div class="value-item"><i class="fa-solid fa-comments"></i><span>{{ t('communication') }}</span></div>
+        <div class="value-item"><i class="fa-solid fa-medal"></i><span>{{ t('quality') }}</span></div>
+        <div class="value-item"><i class="fa-solid fa-headset"></i><span>{{ t('support') }}</span></div>
+      </div>
+
+      <div class="method-neyan" @fadeInUp>
+        <div class="method-top">
+          <div class="method-left">
+            <div class="method-icon"><i class="fa-solid fa-diagram-project"></i></div>
+            <div>
+              <span class="method-label">{{ t('method_label') }}</span>
+              <h3>{{ t('method_title') }}</h3>
+            </div>
+          </div>
+          <div class="method-right">
+            <p>{{ t('method_desc') }}</p>
+          </div>
+        </div>
+
+        <ul class="method-points">
+          <li>{{ t('method_point_1') }}</li>
+          <li>{{ t('method_point_2') }}</li>
+          <li>{{ t('method_point_3') }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <app-section-header
+        @fadeInUp
+        [tag]="t('contact_tag')"
+        [title]="t('contact_title')"
+        [subtitle]="t('contact_subtitle')" />
+
+      <div class="contact-content">
+        <div class="contact-info" @fadeInLeft>
+          <div class="info-card">
+            <h3>{{ t('contact_intro_title') }}</h3>
+            <p>{{ t('contact_intro_text') }}</p>
+
+            <div class="contact-details">
+              <div class="detail">
+                <div class="detail-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="detail-text">
+                  <span class="label">{{ t('label_email') }}</span>
+                  <a href="mailto:neyan.office@gmail.com">neyan.office&#64;gmail.com</a>
+                </div>
+              </div>
+
+              <div class="detail">
+                <div class="detail-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="detail-text">
+                  <span class="label">{{ t('label_phone') }}</span>
+                  <a href="tel:+22231003680">+ 222 31 00 36 80</a>
+                </div>
+              </div>
+
+              <div class="detail">
+                <div class="detail-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="detail-text">
+                  <span class="label">{{ t('label_location') }}</span>
+                  <span>{{ t('location_value') }}</span>
+                </div>
+              </div>
+
+              <div class="detail">
+                <div class="detail-icon">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="detail-text">
+                  <span class="label">{{ t('label_availability') }}</span>
+                  <span>{{ t('availability_value') }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="#" class="social-link" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-link" title="GitHub">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a href="#" class="social-link" title="Twitter">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-container" @fadeInRight>
+          <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="submitForm()" *ngIf="!formSubmitted">
+            <div class="form-group">
+              <label for="name">{{ t('form_name_label') }}</label>
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                [placeholder]="t('form_name_placeholder')"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">{{ t('form_email_label') }}</label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                [placeholder]="t('form_email_placeholder')"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">{{ t('form_subject_label') }}</label>
+              <input
+                type="text"
+                id="subject"
+                formControlName="subject"
+                [placeholder]="t('form_subject_placeholder')">
+            </div>
+
+            <div class="form-group">
+              <label for="message">{{ t('form_message_label') }}</label>
+              <textarea
+                id="message"
+                formControlName="message"
+                rows="5"
+                [placeholder]="t('form_message_placeholder')"
+                required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" [disabled]="isSubmitting">
+              <i class="fa-solid fa-paper-plane"></i>
+              {{ isSubmitting ? t('form_sending') : t('form_send') }}
+            </button>
+          </form>
+
+          <div class="form-success" *ngIf="formSubmitted" @scaleIn>
+            <div class="success-icon">
+              <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <h3>{{ t('form_success_title') }}</h3>
+            <p>{{ t('form_success_text') }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/neyan.png" alt="Neyan Logo">
+            <span>Neyan</span>
+          </div>
+          <p>{{ t('footer_brand_text') }}</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>{{ t('footer_nav_title') }}</h4>
+          <ul>
+            <li><a (click)="scrollToSection('home')">{{ t('nav_home') }}</a></li>
+            <li><a (click)="scrollToSection('about')">{{ t('nav_about') }}</a></li>
+            <li><a (click)="scrollToSection('services')">{{ t('nav_services') }}</a></li>
+            <li><a (click)="scrollToSection('contact')">{{ t('nav_contact') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>{{ t('footer_services_title') }}</h4>
+          <ul>
+            <li><a>{{ t('service_web') }}</a></li>
+            <li><a>{{ t('service_mobile') }}</a></li>
+            <li><a>{{ t('service_cloud') }}</a></li>
+            <li><a>{{ t('service_ai') }}</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h4>{{ t('footer_quick_contact_title') }}</h4>
+          <p>{{ t('footer_quick_contact_text') }}</p>
+          <button class="btn btn-primary" (click)="openEmail()">
+            <i class="fa-solid fa-envelope"></i>
+            neyan.office&#64;gmail.com
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; {{ currentYear }} Neyan. {{ t('footer_rights') }}</p>
+      </div>
+    </div>
+  </footer>
+</div>
